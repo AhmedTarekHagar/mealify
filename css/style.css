@@ -1,0 +1,353 @@
+
+/*#region Global*/
+
+:root {
+    font-family: 'Amatic SC', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    scroll-behavior: smooth;
+
+
+    --lightBackGround: #FFF;
+    --heavyBackGround: #EEE;
+    --mainColor: #CE1212;
+    --hoveringColor: #E61414;
+    --textColor: #212529;
+    --textColorInvert: #FCFCFC;
+}
+
+:root:has(input[type="checkbox"]:checked) {
+    --lightBackGround: #171717;
+    --heavyBackGround: #252525;
+    --mainColor: #C1731C;
+    --hoveringColor: #D78C23;
+    --textColor: #FCFCFC;
+    --textColorInvert: #212529;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: var(--textColor);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--lightBackGround);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--heavyBackGround);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--mainColor);
+}
+
+.fixedWidth {
+    display: block;
+    width: 80%;
+    margin: auto;
+}
+
+.clear {
+    clear: both;
+}
+
+.sectionHead {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 2em;
+}
+
+.sectionHead p {
+    color: #947F90;
+}
+
+.sectionHead h2 {
+    font-family: 'Amatic SC', sans-serif;
+}
+
+.sectionHead h2 span {
+    color: var(--mainColor);
+    text-transform: uppercase;
+}
+
+
+
+/*#endregion*/
+
+/*#region navbar*/
+
+.navbar {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 15vh;
+    align-content: center;
+    background-color: var(--lightBackGround);
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, .2);
+    z-index: 15;
+}
+
+.navbar * {
+    text-decoration: none;
+    color: var(--textColor);
+}
+
+.navbar .fixedWidth {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar .fixedWidth .logo {
+    font-size: 2em;
+}
+
+.navbar .links {
+    font-size: 1.25em;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar .toggle {
+    font-size: 2em;
+}
+
+.navbar .toggle input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+}
+
+.navbar .toggle input[type="checkbox"]:checked+label::before {
+    content: "\f185";
+}
+
+/*#endregion*/
+
+/*#region hero*/
+
+.hero {
+    background-color: var(--heavyBackGround);
+    height: 100vh;
+}
+
+.hero .fixedWidth {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15vh;
+}
+
+.hero .content {
+    padding-top: 15vh;
+    width: 35%;
+    display: inline-block;
+}
+
+.hero .image {
+    padding-top: 15vh;
+    width: 30%;
+    display: inline-block;
+}
+
+.hero .image:hover {
+    animation: shake 1s infinite;
+}
+
+.hero .image img {
+    width: 100%;
+}
+
+.hero .content h1 {
+    font-family: 'Amatic SC', sans-serif;
+    font-size: 3em;
+}
+
+.hero .content p {
+    padding: 1em .5em;
+    margin: 1em 0;
+}
+
+.hero .content .bookButton {
+    padding: 1em;
+    text-decoration: none;
+    background-color: var(--mainColor);
+    border-radius: 0 100px 100px 100px;
+    color: var(--textColorInvert);
+    transition: background-color .5s;
+}
+
+.hero .content .bookButton:hover {
+    background-color: var(--hoveringColor);
+}
+
+.hero .content .ytButton {
+    box-sizing: content-box;
+    margin-left: 1em;
+    text-decoration: none;
+    transition: color .5s;
+}
+
+.hero .content .ytButton:hover {
+    color: var(--hoveringColor);
+}
+
+.hero .content .ytButton::before {
+    padding: 1em;
+    background-color: var(--lightBackGround);
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: 8px solid;
+    border-color: var(--mainColor);
+    border-bottom-color: var(--heavyBackGround);
+    border-right-color: var(--heavyBackGround);
+    display: inline-block;
+    transform: rotate(-45deg);
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(5deg);
+    }
+
+    33% {
+        transform: translate(-1px, -1px) rotate(-5deg);
+    }
+
+    66% {
+        transform: translate(-2px, 2px) rotate(5deg);
+    }
+
+    100% {
+        transform: translate(2px, -2px) rotate(-5deg);
+    }
+}
+
+/*#endregion*/
+
+/*#region chefs*/
+
+.chefs {
+    background-color: var(--lightBackGround);
+    padding: 5em;
+    text-align: center;
+}
+
+.chefs .container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.chefs .container .card {
+    background-color: var(--heavyBackGround);
+    width: 30%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, .2);
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    padding-bottom: 1em;
+    position: relative;
+    transform: scale(1);
+    transition: all 1s ease;
+}
+
+.chefs .container .card:hover {
+    transform: scale(1.2);
+}
+
+.chefs .container .card img {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.chefs .container .card .social {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 10%;
+    background-color: rgba(128, 128, 128, 0.7);
+    position: absolute;
+    border-radius: 10px;
+    padding: 10px;
+    right: -40px;
+    top: 30px;
+    transition: all 2s ease;
+    transition-delay: 1s;
+}
+
+.chefs .container .card:hover .social {
+    right: 10px;
+}
+
+.chefs .container .card .social a i {
+    color: rgba(128, 128, 128, 0.6);
+    transition: color 1s;
+}
+
+.chefs .container .card .social a i:hover {
+    color: rgba(128, 128, 128, 1);
+}
+
+/*#endregion*/
+
+/*#region gallery*/
+
+.gallery {
+    background-color: var(--heavyBackGround);
+    padding: 4em;
+}
+
+.gallery .items {
+    width: 100%;
+    columns: 3;
+}
+
+.gallery .items .item {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border: 5px solid var(--lightBackGround);
+    margin: 2em 0;
+}
+
+.gallery .items .item img {
+    width: 100%;
+}
+
+.gallery .items .item .content {
+    text-align: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    left: 0;
+    top: 0;
+    padding: 0 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateY(100%);
+    transition: all 2s;
+}
+
+.gallery .items .item .content * {
+    color: #fff;
+}
+
+.gallery .items .item:hover .content {
+    transform: translateY(0%);
+}
+
+/*#endregion*/
